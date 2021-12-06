@@ -4,7 +4,7 @@ ADMINPASSWORD=$2
 PORT=$3
 CHAT=$4
 # clone Odoo directory
-git clone --depth=1 https://github.com/bluezebra-io/odoo-14-docker-compose $CONTAINERNAME
+git clone --depth=1 https://github.com/cipsoftware/odoo-14-docker-compose $CONTAINERNAME
 rm -rf $CONTAINERNAME/.git
 # set permission
 mkdir -p $CONTAINERNAME/postgresql
