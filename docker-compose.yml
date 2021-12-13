@@ -14,13 +14,14 @@ services:
         - ./postgresql:/var/lib/postgresql/data
 
   odoo14:
-    image: odoo:14
+    image: ciperic/odoo-debug:14
     user: root
     depends_on:
       - db
     ports:
-      - "10014:8069"
-      - "20014:8072" # live chat
+      - "11014:8069"
+      - "21014:8072" # live chat
+      - "5678:5678"  # python debug
     tty: true
     command: --
 #    command: odoo scaffold /mnt/extra-addons/custom_module
@@ -33,7 +34,7 @@ services:
       #- /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./addons:/mnt/addons
-      - ./enterprise:/mnt/enterprise
+      #- ./enterprise:/mnt/enterprise
       - ./logs:/mnt/logs
       - ./etc:/etc/odoo
     restart: always             # run as a service

@@ -9,10 +9,10 @@ rm -rf $CONTAINERNAME/.git
 # set permission
 mkdir -p $CONTAINERNAME/postgresql
 sudo chmod -R 777 $CONTAINERNAME
-# enterprise
-cd $CONTAINERNAME
-git clone -b 14.0 https://github.com/odoo/enterprise.git
-cd ..
+# enterprise: not required anymore, is now contained in ciperic\odoo-debug image
+# cd $CONTAINERNAME
+# git clone -b 14.0 https://github.com/odoo/enterprise.git
+# cd ..
 # config
 if grep -qF "fs.inotify.max_user_watches" /etc/sysctl.conf; then echo $(grep -F "fs.inotify.max_user_watches" /etc/sysctl.conf); else echo "fs.inotify.max_user_watches = 524288" | sudo tee -a /etc/sysctl.conf; fi
 sudo sysctl -p
